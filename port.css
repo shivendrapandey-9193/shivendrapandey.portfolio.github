@@ -1,0 +1,760 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif; 
+}
+
+:root {
+    --bg-color: #080808;
+    --second-bg-color: #131313;
+    --text-color: white; 
+    --main-color: #00ffee;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background: linear-gradient(to right, var(--bg-color), var(--second-bg-color));
+    color: var(--text-color);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 10%; 
+    background: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+
+.logo {
+    font-size: 2.8rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    color: var(--main-color);
+}
+
+/* Base styles for navbar */
+.navbar {
+    display: flex; /* Default to flexbox */
+    justify-content: flex-start; /* Align items to the start */
+    list-style: none; /* Remove default list styling */
+}
+
+/* Initially hide the navbar on mobile */
+.navbar {
+    display: none; /* Hide navbar by default */
+}
+
+/* Show navbar when active */
+.navbar.active {
+    display: flex; /* Show navbar */
+    flex-direction: column; /* Stack items vertically */
+    background-color: #fff; /* Background color */
+    position: absolute; /* Position it absolutely */
+    top: 60px; /* Adjust to sit below the header */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure it is above other elements */
+}
+
+/* Styles for the menu icon */
+#menu-icon {
+    display: block; /* Show menu icon */
+}
+
+/* Media query for mobile responsiveness */
+@media (min-width: 768px) {
+    .navbar {
+        display: flex; /* Show navbar normally on larger screens */
+        flex-direction: row; /* Align items in a row */
+    }
+
+    #menu-icon {
+        display: none; /* Hide the menu icon on larger screens */
+    }
+}
+
+/* Optional styles for links */
+.navbar a {
+    padding: 1rem; /* Padding around links */
+    text-decoration: none; /* Remove underline */
+    color: #cebcbc; /* Link color */
+}
+
+/* Hover effects */
+.navbar a:hover {
+    background-color: #f0f0f0; /* Change background on hover */
+}.navbar a:hover {
+    color: var(--main-color);; /* Change color on hover */
+    text-shadow: 0 0 10px var(--main-color);; /* Glowing effect */
+    background-color: rgba(255, 255, 255, 0.1); /* Background color on hover */
+}
+
+.navbar a.active {
+    color: var(--main-color);; /* Active link color */
+    text-shadow: 0 0 10px rgba(252, 252, 248, 0.7); /* Glowing effect for active link */
+}
+
+
+
+
+
+
+
+section {
+    min-height: 80vh; 
+    padding: 8rem 10% 5rem; 
+    margin-top: 3rem; 
+}
+
+.home-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+}
+
+.text-section {
+    max-width: 55%; 
+}
+
+.home-content h1 {
+    padding-top: 2%;
+    font-size: 5rem; 
+    font-weight: 700;
+    margin-top: 8rem;
+    line-height: 1;
+    color: var(--main-color);
+}
+
+.home-content h3 {
+    font-size: 3rem; 
+    margin-bottom: 1rem;
+    color: var(--main-color);
+}
+
+.home-content p {
+    font-size: 1.4rem; 
+    line-height: 1.6;
+    margin-bottom: 1.5rem; 
+}
+.home-img {
+    margin-left: 2rem; 
+    width: 300px; /* Fixed width */
+    height: 300px; /* Fixed height for square shape */
+    overflow: hidden; /* Hide overflow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* For positioning the glow */
+    border-radius: 15px; /* Curve the edges of the container */
+}
+
+.home-img img {
+    width: 100%; /* Make the image responsive */
+    height: 100%; /* Ensure it fills the container */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 15px; /* Curve the edges of the image */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+.home-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent; /* No background */
+    border-radius: 15px; /* Match the container's border radius */
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0); /* Initial glow set to transparent */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+    z-index: -1; /* Place behind the image */
+}
+
+.home-img:hover::before {
+    box-shadow: 0 0 35px rgba(255, 255, 255, 1); /* Change to your desired glow color */
+}
+
+.home-img:hover img {
+    transform: scale(1.05); /* Slightly scale up the image on hover */
+}
+
+@media (max-width: 768px) {
+    .home-img {
+        width: 200px; /* Adjust size for smaller devices */
+        height: 200px;
+    }
+}
+
+.digital-clock {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    color: #000; 
+    text-align: center; 
+    margin-top: 10px; 
+}
+
+.social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem; 
+    margin-bottom: 1.5rem; 
+}
+
+.social-icon a {
+    width: 3.5rem; 
+    height: 3.5rem;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem; 
+    transition: 0.3s ease-in-out;
+}
+
+.social-icon a:hover {
+    transform: scale(1.15);
+    background-color: var(--main-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2.5rem; 
+    background: var(--main-color);
+    border-radius: 4rem;
+    font-size: 1.6rem; 
+    color: black;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    margin-top: 0.8rem; 
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px var(--main-color);
+}
+
+.show-and-tell {
+    padding: 4rem 10%;
+    text-align: center;
+}
+
+.show-and-tell h2 {
+    font-size: 3.5rem;
+    margin-bottom: 2.5rem;
+    color: var(--main-color);
+}
+
+.image-slider {
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0; 
+}
+
+.slider {
+    display: flex;
+    animation: slide 15s linear infinite; 
+}
+
+.slide {
+    display: flex; 
+}
+
+.slide a {
+    margin: 0 0.5rem; 
+}
+
+.slide img {
+    width: 180px; 
+    border-radius: 8px; 
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); 
+    }
+}
+.certificate-section {
+    text-align: center;
+    margin: 20px 0 10px; /* Reduced bottom margin */
+}
+
+.section-title {
+    font-size: 28px;
+    color: #333;
+}
+
+.certificate-slider {
+    position: relative;
+    width: 90%; /* Use a percentage width for better responsiveness */
+    max-width: 600px; /* Keep a max width */
+    height: auto; /* Allow height to adjust */
+    overflow: hidden;
+    margin: auto;
+}
+
+.certificate {
+    display: none; /* Initially hide all certificates */
+    width: 100%;
+    text-align: center;
+}
+
+.certificate img {
+    width: 100%; /* Use full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    border: none; /* Ensure no border */
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    cursor: pointer;
+    font-size: 30px; /* Increased button font size */
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 24px; /* Slightly smaller title on mobile */
+    }
+
+    .nav-button {
+        font-size: 24px; /* Smaller buttons on mobile */
+    }
+
+    .certificate-slider {
+        width: 95%; /* Adjust width for mobile */
+    }
+
+    .certificate {
+        line-height: 1.5; /* Increase readability */
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 20px; /* Smaller title for very small screens */
+    }
+
+    .nav-button {
+        font-size: 20px; /* Smaller buttons for very small screens */
+    }
+
+    .certificate {
+        font-size: 18px; /* Smaller font size for descriptions */
+    }
+}
+
+
+.internship {
+    background-color: #f8f9fa; 
+    padding: 30px 10px; 
+    border-radius: 8px; 
+    margin: 15px 0; 
+}
+
+.internship h2 {
+    text-align: center; 
+    font-size: 2rem; 
+    margin-bottom: 15px; 
+    color: #343a40; 
+}
+
+.internship-card {
+    background-color: white; 
+    border: 1px solid #ced4da; 
+    border-radius: 5px; 
+    padding: 15px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    margin: 15px 0; 
+}
+
+.internship-card h3 {
+    margin: 0; 
+    font-size: 1.5rem; 
+    color: #007BFF; 
+}
+
+.internship-card p {
+    margin: 10px 0; 
+    color: #495057; 
+}
+
+.internship-card ul {
+    margin: 10px 0; 
+    padding-left: 20px; 
+}
+section {
+    padding: 5rem 10% 0; /* Adjusted top padding for sections */
+    margin: 0; /* Removed margin */
+}
+
+.internship {
+    padding: 30px 10px; 
+    border-radius: 8px; 
+    margin: 0; /* Remove margin */
+}.social-posts {
+    display: flex;
+    justify-content: space-between; /* Space between the two boxes */
+    margin-top: 2rem; /* Margin above the posts section */
+    flex-wrap: wrap; /* Allow wrapping to the next line */
+}
+
+.post-box {
+    background-color: var(--second-bg-color); /* Use your defined color */
+    border-radius: 8px;
+    padding: 1.5rem; /* Padding inside the boxes */
+    width: calc(50% - 1rem); /* Adjust width for spacing */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+    overflow: hidden; /* Prevent overflow for better appearance */
+    margin-bottom: 1rem; /* Space below each post box */
+}
+
+.post-box h4 {
+    font-size: 2rem; /* Font size for headings */
+    color: var(--main-color); /* Use your defined main color */
+    margin-bottom: 1rem; /* Space below the heading */
+    text-align: center; /* Center the headings */
+}
+
+.post-box a {
+    display: inline-block; /* Make the link behave like a button */
+    margin-top: 1rem; /* Space above the link */
+    color: var(--main-color); /* Link color */
+    font-size: 1.5rem; /* Font size for the link */
+    text-align: center; /* Center the link */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Transition effect for color change */
+}
+
+.post-box a:hover {
+    color: #00bfff; /* Change color on hover */
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    .post-box {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .social-posts {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+}
+
+
+.show-and-tell {
+    padding: 4rem 10%;
+    text-align: center;
+    background-color: var(--second-bg-color);
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.show-and-tell h2 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    color: var(--main-color);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.show-and-tell p {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.image-slider {
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0; 
+    margin-bottom: 2rem;
+}
+
+.slider {
+    display: flex;
+    animation: slide 15s linear infinite; 
+}
+
+.slide {
+    display: flex; 
+}
+
+.slide a {
+    margin: 0 0.5rem; 
+}
+
+.slide img {
+    width: 180px; 
+    border-radius: 8px; 
+    transition: transform 0.3s ease;
+}
+
+.slide img:hover {
+    transform: scale(1.05);
+}
+
+.buttons {
+    text-align: center; 
+    margin-top: 1rem; 
+}
+
+.buttons .btn {
+    margin: 0 0.5rem; 
+    padding: 0.8rem 2rem;
+    background: var(--main-color);
+    border-radius: 4rem;
+    color: black;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.buttons .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px var(--main-color);
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); 
+    }
+}
+
+.newsletter-footer {
+    padding: 2.5rem 10%;
+    margin: 0; /* Remove margin */
+}
+
+/* Additional styling to reduce spacing */
+.internship-card {
+    margin: 10px 0; /* Reduced margin for internship cards */
+}
+.newsletter-footer {
+    background: linear-gradient(to right, #131313, #080808);
+    color: var(--text-color);
+    padding: 2.5rem 10%;
+    text-align: center;
+}
+
+.newsletter {
+    padding: 4rem 10%;
+    text-align: center;
+    background-color: var(--second-bg-color);
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+    .header {
+        padding: 1rem 5%;
+    }
+
+    .logo {
+        font-size: 2.5rem;
+    }
+
+    .navbar a {
+        font-size: 1.4rem; 
+    }
+
+    section {
+        padding: 6rem 5% 4rem; 
+    }
+
+    .home-content h1 {
+        font-size: 4.5rem; 
+    }
+
+    .home-content h3 {
+        font-size: 2.5rem; 
+    }
+
+    .home-content p {
+        font-size: 1.3rem; 
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem; 
+    }
+
+    .home-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home-img {
+        margin-left: 0;
+        margin-top: 2rem; 
+    }
+
+    .project {
+        width: 100%; 
+    }
+
+    .project-container {
+        justify-content: center; 
+    }
+
+    .newsletter {
+        padding: 3rem 5%;
+    }
+}
+
+@media (max-width: 600px) {
+    .home-content h1 {
+        font-size: 3.5rem; 
+    }
+
+    .home-content h3 {
+        font-size: 2rem; 
+    }
+
+    .home-content p {
+        font-size: 1.2rem; 
+    }
+
+    .btn {
+        padding: 0.6rem 2rem; 
+        font-size: 1.4rem; 
+    }
+
+    .show-and-tell h2 {
+        font-size: 2.5rem;
+    }
+
+    .newsletter-footer {
+        padding: 2rem 5%;
+    }
+
+    .internship h2 {
+        font-size: 1.6rem; 
+    }
+
+    .internship-card h3 {
+        font-size: 1.4rem; 
+    }
+
+    .internship-card p {
+        font-size: 1rem; 
+    }
+
+    .digital-clock {
+        font-size: 1rem; 
+    }
+
+    .social-icon a {
+        width: 2.5rem; 
+        height: 2.5rem; 
+        font-size: 1.5rem; 
+    }
+
+    .image-slider {
+        padding: 1rem 0; 
+    }
+
+    .image-slider img {
+        width: 150px; 
+    }
+
+    .newsletter input {
+        width: 80%; 
+        padding: 0.5rem; 
+        font-size: 1rem; 
+    }
+
+    .newsletter button {
+        padding: 0.5rem 1.5rem; 
+        font-size: 1rem; 
+    }
+}
+.footer {
+    background: var(--second-bg-color);
+    color: var(--text-color);
+    padding: 2.5rem 10%;
+    text-align: center;
+}
+
+.footer-content {
+    margin-top: 1rem;
+}
+
+.footer-content p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Increased gap for better spacing */
+    margin-top: 0.5rem; 
+}
+
+.social-icons a {
+    color: var(--main-color);
+    font-size: 2rem; 
+    transition: transform 0.3s ease, color 0.3s ease;
+    perspective: 1000px; /* For 3D effect */
+}
+
+.social-icons a:hover {
+    transform: rotateY(20deg) translateZ(10px);
+    color: white; /* Change to your preferred hover color */
+}
+
+.newsletter button {
+    transition: transform 0.3s ease;
+}
+
+.newsletter button:hover {
+    transform: rotateY(10deg);
+}
+
